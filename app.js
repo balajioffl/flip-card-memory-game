@@ -4,7 +4,7 @@ const emojis = [
   "🐱", "🐈", "🐈‍⬛", "😺", "😸", "😻"
 ];
 
-var shuf_emojis = emojis.sort(() => (Math.random() - 0.5));
+let shuf_emojis = emojis.sort(() => (Math.random() - 0.5));
 
 const gameContainer = document.createElement("div");
 gameContainer.className = "game";
@@ -22,8 +22,7 @@ const countdown = setInterval(() => {
 
   if (timeLeft <= 0) {
     clearInterval(countdown);
-    alert("Time's up 😸 Try again.");
-    location.reload();
+    popup('Time up ! 😸 try again');
   }
 }, 1000);
 
@@ -54,17 +53,19 @@ for (var i = 0; i < emojis.length; i++) {
 
       if (document.querySelectorAll(".boxMatch").length == emojis.length) {
         clearInterval(countdown); 
-        showWinPopup();
+        popup();
       }
     }, 500);
   };
   gameContainer.appendChild(box);
 }
 
-function showWinPopup() {
+function popup(timeup) {
   let popup = document.createElement("div");
-  popup.className = "win-popup";
-  popup.innerHTML = "<h2>🎉 You Won! 🎉</h2><p>Congratulations!</p>";
+  popup.className = "popup";
+  popup.innerHTML = (timeup) ? `<h2>${timeup}</h2>` : `<h2>🎉 You Won! 🎉</h2><p>Congratulations!</p>`;
   document.body.appendChild(popup);
+  setTimeout(()=>{
+    location.reload();
+  },2000);
 }
-

@@ -14,7 +14,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
-
 .container {
     display: flex;
     flex-direction: column;
@@ -128,7 +127,7 @@ h2 {
     border-radius: 8px;
 }
 
-.win-popup {
+.popup {
     position: fixed;
     top: 5%;
     left: 50%;
